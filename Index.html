@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>會議重點整理｜新任執行副總 許純琪</title>
+<style>
+  :root{
+    --ink:#101828;
+    --text:#263241;
+    --muted:#667085;
+    --soft:#f6f8fb;
+    --paper:#ffffff;
+    --line:#e6ebf2;
+    --navy:#061d3a;
+    --navy-2:#0b315f;
+    --blue:#2563eb;
+    --blue-2:#1d4ed8;
+    --blue-soft:#edf4ff;
+    --green:#14a46c;
+    --green-soft:#eafaf3;
+    --amber:#f59e0b;
+    --amber-soft:#fff6e5;
+    --rose:#ef4444;
+    --radius-xl:28px;
+    --radius-lg:22px;
+    --radius:16px;
+    --shadow:0 24px 60px -36px rgba(6,29,58,.48);
+    --shadow-card:0 14px 36px -28px rgba(6,29,58,.46);
+    --shadow-soft:0 8px 22px -18px rgba(6,29,58,.4);
+    --max:1080px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    min-height:100vh;
+    font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    color:var(--text);
+    line-height:1.75;
+    letter-spacing:.2px;
+    background:
+      radial-gradient(circle at 8% 0%,rgba(37,99,235,.12),transparent 30%),
+      radial-gradient(circle at 90% 14%,rgba(20,164,108,.12),transparent 28%),
+      linear-gradient(180deg,#f4f7fb 0%,#eef3f8 42%,#f8fafc 100%);
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  button{font:inherit;}
+
+  #progress{
+    position:fixed;top:0;left:0;width:0;height:4px;z-index:100;
+    background:linear-gradient(90deg,#60a5fa,var(--green),#fbbf24);
+    box-shadow:0 0 18px rgba(37,99,235,.35);
+  }
+
+  .page-shell{width:min(var(--max),calc(100% - 40px));margin:0 auto;}
+
+  .hero{
+    position:relative;
+    color:#fff;
+    overflow:hidden;
+    padding:54px 0 132px;
+    isolation:isolate;
+    background:
+      radial-gradient(circle at 18% 16%,rgba(96,165,250,.34),transparent 25%),
+      radial-gradient(circle at 86% 12%,rgba(20,164,108,.32),transparent 22%),
+      linear-gradient(135deg,#061d3a 0%,#0b315f 52%,#07172e 100%);
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:-2;
+    background-image:
+      linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
+    background-size:38px 38px;mask-image:linear-gradient(to bottom,#000,transparent 88%);
+  }
+  .hero::after{
+    content:"";position:absolute;right:-180px;bottom:-260px;width:620px;height:620px;border-radius:50%;z-index:-1;
+    border:90px solid rgba(255,255,255,.055);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:34px;align-items:end;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:8px 14px;border:1px solid rgba(255,255,255,.18);border-radius:999px;
+    background:rgba(255,255,255,.1);backdrop-filter:blur(12px);
+    font-size:12px;font-weight:800;letter-spacing:2.2px;text-transform:uppercase;
+    box-shadow:inset 0 1px rgba(255,255,255,.15);
+  }
+  .eyebrow .pulse{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 6px rgba(34,197,94,.16),0 0 18px rgba(34,197,94,.8);}
+  .hero h1{
+    max-width:760px;margin:24px 0 16px;
+    font-size:clamp(34px,5vw,58px);line-height:1.08;font-weight:900;letter-spacing:-1.5px;
+  }
+  .hero .lead{max-width:760px;font-size:18px;line-height:1.9;color:rgba(255,255,255,.84);}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;
+    min-height:44px;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.18);
+    font-weight:800;font-size:14px;transition:.22s ease;
+  }
+  .btn.primary{background:#fff;color:var(--navy);box-shadow:0 16px 34px -24px #fff;}
+  .btn.ghost{background:rgba(255,255,255,.1);color:#fff;backdrop-filter:blur(10px);}
+  .btn:hover{transform:translateY(-2px);}
+  .hero-card{
+    background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:var(--radius-xl);
+    padding:22px;backdrop-filter:blur(18px);box-shadow:0 30px 70px -40px rgba(0,0,0,.45);
+  }
+  .hero-card .mini-title{font-size:13px;color:rgba(255,255,255,.7);font-weight:800;letter-spacing:1.8px;margin-bottom:14px;}
+  .hero-card .metric{display:grid;grid-template-columns:56px 1fr;gap:14px;align-items:center;padding:14px 0;border-top:1px solid rgba(255,255,255,.14);}
+  .hero-card .metric:first-of-type{border-top:0;padding-top:0;}
+  .hero-card .num{font-size:32px;font-weight:900;line-height:1;color:#fff;}
+  .hero-card .txt{font-size:14px;color:rgba(255,255,255,.78);line-height:1.55;}
+
+  .overview{
+    margin-top:-76px;position:relative;z-index:5;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+  }
+  .overview-card{
+    background:rgba(255,255,255,.92);border:1px solid rgba(230,235,242,.9);border-radius:var(--radius-lg);
+    padding:18px 18px 17px;box-shadow:var(--shadow);backdrop-filter:blur(14px);
+  }
+  .overview-card .label{font-size:12px;color:var(--muted);font-weight:800;letter-spacing:1.3px;}
+  .overview-card .value{margin-top:7px;color:var(--ink);font-size:17px;font-weight:900;line-height:1.35;}
+  .overview-card .hint{margin-top:6px;color:var(--muted);font-size:13px;line-height:1.55;}
+
+  .toc-wrap{position:sticky;top:12px;z-index:50;margin:24px auto 0;}
+  .toc{
+    display:flex;gap:8px;padding:8px;border:1px solid rgba(230,235,242,.96);border-radius:999px;
+    background:rgba(255,255,255,.86);backdrop-filter:blur(18px);box-shadow:var(--shadow-soft);overflow-x:auto;
+    scrollbar-width:none;
+  }
+  .toc::-webkit-scrollbar{display:none;}
+  .toc a{
+    white-space:nowrap;text-decoration:none;flex:1;text-align:center;
+    padding:10px 14px;border-radius:999px;color:var(--muted);font-weight:900;font-size:14px;transition:.2s ease;
+  }
+  .toc a:hover{background:var(--blue-soft);color:var(--blue-2);}
+  .toc a.active{background:var(--navy);color:#fff;box-shadow:0 12px 22px -18px var(--navy);}
+
+  main{padding:26px 0 88px;}
+  section{scroll-margin-top:96px;margin-top:46px;}
+  .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:18px;}
+  .kicker{font-size:12px;font-weight:900;letter-spacing:2px;color:var(--blue);text-transform:uppercase;margin-bottom:4px;}
+  h2{font-size:clamp(24px,3vw,34px);line-height:1.22;color:var(--ink);letter-spacing:-.5px;}
+  .section-note{max-width:420px;text-align:right;color:var(--muted);font-size:14px;line-height:1.6;}
+
+  .strategy-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;}
+  .strategy-card{
+    grid-column:span 2;position:relative;overflow:hidden;
+    min-height:300px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-xl);
+    padding:22px;box-shadow:var(--shadow-card);transition:transform .24s ease,box-shadow .24s ease,border-color .24s ease;
+  }
+  .strategy-card:nth-child(1),.strategy-card:nth-child(2){grid-column:span 3;min-height:278px;}
+  .strategy-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#cfdaf0;}
+  .strategy-card::after{
+    content:"";position:absolute;right:-56px;top:-56px;width:154px;height:154px;border-radius:50%;
+    background:linear-gradient(135deg,rgba(37,99,235,.12),rgba(20,164,108,.12));
+  }
+  .card-top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:16px;position:relative;z-index:1;}
+  .index{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:48px;height:48px;border-radius:16px;background:var(--navy);color:#fff;font-size:18px;font-weight:950;box-shadow:0 15px 28px -22px var(--navy);
+  }
+  .priority{font-size:12px;font-weight:900;color:var(--green);background:var(--green-soft);border:1px solid #cceede;padding:5px 10px;border-radius:999px;}
+  .strategy-card h3{position:relative;z-index:1;color:var(--ink);font-size:22px;line-height:1.25;margin-bottom:10px;letter-spacing:-.4px;}
+  .strategy-card p{position:relative;z-index:1;font-size:15px;color:#344054;line-height:1.8;}
+  .tags{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+  .tag{font-size:12px;font-weight:900;color:var(--blue-2);background:var(--blue-soft);border:1px solid #d8e7ff;border-radius:999px;padding:5px 10px;}
+
+  .action-layout{display:grid;grid-template-columns:.82fr 1.18fr;gap:18px;align-items:start;}
+  .focus-panel{
+    position:sticky;top:92px;background:linear-gradient(155deg,#071f3d 0%,#0d3768 100%);color:#fff;border-radius:var(--radius-xl);
+    padding:26px;box-shadow:var(--shadow);overflow:hidden;
+  }
+  .focus-panel::after{content:"";position:absolute;right:-90px;bottom:-130px;width:260px;height:260px;border-radius:50%;border:42px solid rgba(255,255,255,.07);}
+  .focus-panel .small{font-size:12px;font-weight:900;letter-spacing:2px;color:rgba(255,255,255,.62);}
+  .focus-panel .big{font-size:36px;font-weight:950;line-height:1.08;margin:12px 0 16px;letter-spacing:-1px;}
+  .focus-panel p{position:relative;z-index:1;color:rgba(255,255,255,.8);font-size:15px;line-height:1.85;}
+  .action-list{display:grid;gap:12px;}
+  .action-item{
+    display:grid;grid-template-columns:46px 1fr;gap:14px;align-items:start;
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);padding:18px;box-shadow:var(--shadow-soft);
+    transition:.22s ease;
+  }
+  .action-item:hover{transform:translateX(4px);border-color:#cbd6e6;box-shadow:var(--shadow-card);}
+  .check{width:38px;height:38px;border-radius:14px;background:var(--green-soft);color:var(--green);display:flex;align-items:center;justify-content:center;font-weight:950;}
+  .action-item b{display:block;color:var(--ink);font-size:16px;margin-bottom:3px;}
+  .action-item span{font-size:14px;color:var(--muted);line-height:1.65;}
+
+
+  .translate-stack{position:relative;z-index:1;display:grid;gap:12px;margin-top:16px;}
+  .translate-box{border:1px solid var(--line);border-radius:18px;padding:14px;background:#fbfdff;}
+  .translate-box.lead{background:linear-gradient(135deg,var(--blue-soft),#fff);border-color:#dbe9ff;}
+  .translate-label{display:inline-flex;align-items:center;gap:6px;margin-bottom:6px;font-size:12px;font-weight:950;letter-spacing:1.2px;color:var(--blue-2);text-transform:uppercase;}
+  .translate-box p{font-size:14.5px;line-height:1.72;color:#344054;}
+
+  .meeting-actions{display:grid;gap:16px;}
+  .action-card{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-xl);
+    padding:20px;box-shadow:var(--shadow-soft);display:grid;grid-template-columns:170px 1fr;gap:18px;
+    transition:.22s ease;break-inside:avoid;
+  }
+  .action-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-card);border-color:#cbd6e6;}
+  .action-code{
+    min-height:100%;border-radius:22px;background:linear-gradient(155deg,var(--navy),var(--navy-2));
+    color:#fff;padding:18px;display:flex;flex-direction:column;justify-content:space-between;gap:16px;
+  }
+  .action-code .step{font-size:12px;font-weight:950;letter-spacing:2px;color:rgba(255,255,255,.62);}
+  .action-code .name{font-size:22px;font-weight:950;line-height:1.15;letter-spacing:-.4px;}
+  .action-body h3{font-size:20px;color:var(--ink);line-height:1.35;margin-bottom:10px;}
+  .action-body p{font-size:15px;color:#344054;line-height:1.75;}
+  .action-split{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;}
+  .action-mini{border-radius:18px;border:1px solid var(--line);background:var(--soft);padding:13px;}
+  .action-mini b{display:block;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:var(--blue-2);margin-bottom:5px;}
+  .action-mini span{display:block;font-size:14px;line-height:1.58;color:#475467;}
+  .meeting-output{margin-top:18px;border:1px solid #cceede;background:linear-gradient(135deg,var(--green-soft),#fff);border-radius:var(--radius-xl);padding:20px;box-shadow:var(--shadow-soft);}
+  .meeting-output h3{font-size:20px;color:var(--ink);margin-bottom:12px;}
+  .output-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .output-grid div{border:1px solid #cceede;background:#fff;border-radius:18px;padding:14px;font-size:14px;line-height:1.6;color:#344054;}
+  .output-grid b{display:block;color:var(--green);font-size:13px;margin-bottom:4px;}
+
+  .qa-panel{display:grid;gap:12px;}
+  details.qa{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-soft);overflow:hidden;
+  }
+  details.qa[open]{box-shadow:var(--shadow-card);border-color:#cfd8e8;}
+  summary{
+    list-style:none;cursor:pointer;display:grid;grid-template-columns:34px 1fr 24px;gap:12px;align-items:start;
+    padding:19px 20px;color:var(--ink);font-weight:900;font-size:15.5px;line-height:1.55;user-select:none;
+  }
+  summary::-webkit-details-marker{display:none;}
+  .q-badge{width:30px;height:30px;border-radius:11px;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:13px;}
+  .chev{color:var(--muted);transition:.2s ease;}
+  details[open] .chev{transform:rotate(180deg);}
+  .answer{padding:0 20px 20px 66px;font-size:15px;color:#344054;}
+  .answer-inner{border-left:4px solid var(--green);background:linear-gradient(90deg,var(--green-soft),transparent);padding:12px 14px;border-radius:0 14px 14px 0;}
+  .answer-label{display:inline-flex;margin-bottom:6px;font-size:12px;font-weight:950;letter-spacing:1.4px;color:var(--green);}
+
+  .note-card{
+    display:grid;grid-template-columns:1fr .9fr;gap:18px;align-items:stretch;
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-xl);box-shadow:var(--shadow-card);overflow:hidden;
+  }
+  .note-main{padding:28px;}
+  .note-main h3{font-size:30px;color:var(--ink);line-height:1.18;margin-bottom:10px;letter-spacing:-.7px;}
+  .note-main p{color:var(--muted);font-size:15px;line-height:1.8;}
+  .date-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;}
+  .date-box{border-radius:18px;background:var(--amber-soft);border:1px solid #fde1ae;padding:16px;}
+  .date-box .date{font-size:22px;font-weight:950;color:#9a5b00;line-height:1.1;}
+  .date-box .place{font-size:13px;color:#92400e;font-weight:900;margin-top:4px;}
+  .note-side{background:linear-gradient(155deg,var(--navy),var(--blue-2));color:#fff;padding:28px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;}
+  .note-side::after{content:"";position:absolute;right:-44px;top:-44px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.1);}
+  .note-side .label{font-size:12px;font-weight:950;letter-spacing:2px;color:rgba(255,255,255,.65);}
+  .note-side .line{font-size:18px;font-weight:900;line-height:1.55;margin-top:10px;position:relative;z-index:1;}
+  .note-side .warning{margin-top:24px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:14px;font-size:14px;line-height:1.65;color:rgba(255,255,255,.84);position:relative;z-index:1;}
+
+  footer{margin-top:54px;text-align:center;color:var(--muted);font-size:13px;line-height:1.9;padding-top:28px;border-top:1px solid var(--line);}
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .58s ease,transform .58s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *,*::before,*::after{animation:none!important;transition:none!important;}
+    .reveal{opacity:1;transform:none;}
+  }
+  @media(max-width:920px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-card{max-width:520px;}
+    .overview{grid-template-columns:repeat(2,1fr);}
+    .strategy-card,.strategy-card:nth-child(1),.strategy-card:nth-child(2){grid-column:span 3;}
+    .action-layout,.note-card{grid-template-columns:1fr;}
+    .focus-panel{position:relative;top:auto;}
+    .section-head{align-items:flex-start;flex-direction:column;}
+    .section-note{text-align:left;max-width:100%;}
+  }
+  @media(max-width:640px){
+    .page-shell{width:min(100% - 28px,var(--max));}
+    .hero{padding:40px 0 112px;}
+    .hero h1{font-size:34px;letter-spacing:-.8px;}
+    .hero .lead{font-size:16px;line-height:1.8;}
+    .hero-actions .btn{flex:1;min-width:150px;}
+    .overview{grid-template-columns:1fr;margin-top:-68px;}
+    .toc-wrap{top:8px;width:100%;}
+    .toc{border-radius:18px;justify-content:flex-start;}
+    .toc a{flex:0 0 auto;font-size:13px;padding:9px 12px;}
+    main{padding-top:18px;}
+    section{margin-top:38px;scroll-margin-top:86px;}
+    .strategy-grid{display:grid;grid-template-columns:1fr;}
+    .strategy-card,.strategy-card:nth-child(1),.strategy-card:nth-child(2){grid-column:auto;min-height:auto;padding:20px;}
+    .action-item{grid-template-columns:40px 1fr;padding:16px;}
+    .action-card{grid-template-columns:1fr;padding:16px;}
+    .action-code{min-height:auto;}
+    .action-split,.output-grid{grid-template-columns:1fr;}
+    summary{grid-template-columns:30px 1fr 18px;padding:17px 16px;}
+    .answer{padding:0 16px 18px 58px;}
+    .date-grid{grid-template-columns:1fr;}
+    .note-main,.note-side{padding:22px;}
+  }
+  @media print{
+    body{background:#fff;}
+    #progress,.toc-wrap,.hero-actions{display:none;}
+    .hero{padding:28px 0 42px;}
+    .overview{margin-top:18px;}
+    .strategy-card,.overview-card,.action-item,details.qa,.note-card{box-shadow:none;break-inside:avoid;}
+    .focus-panel{position:relative;top:auto;}
+    details.qa .answer{display:block!important;max-height:none!important;}
+    details.qa summary .chev{display:none;}
+    .strategy-card,.overview-card,.action-item,.action-card,details.qa,.note-card,.meeting-output{box-shadow:none;break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="hero">
+  <div class="page-shell hero-grid">
+    <div>
+      <span class="eyebrow"><span class="pulse"></span>FUBON LIFE ・ 主管會議</span>
+      <h1>新任執行副總許純琪<br>會議重點整理</h1>
+      <p class="lead">把會議摘要整理成「看得懂、找得到、能行動」的主管工作頁：先看五大方向，再落到待辦、Q&A 與必到活動。</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#strategy">先看五大方向</a>
+        <a class="btn ghost" href="#actions">直接看主管待辦</a>
+      </div>
+    </div>
+    <aside class="hero-card" aria-label="會議快速摘要">
+      <div class="mini-title">MEETING SNAPSHOT</div>
+      <div class="metric"><div class="num">5</div><div class="txt">未來半年努力方向：市場、商品、客群、組織、服務。</div></div>
+      <div class="metric"><div class="num">4</div><div class="txt">Q&A 重點回應：投資型、分紅、招募、行銷獎勵。</div></div>
+      <div class="metric"><div class="num">2</div><div class="txt">11 月必到場次：台中與後續活動。</div></div>
+    </aside>
+  </div>
+</header>
+
+<div class="page-shell overview" aria-label="基本資訊">
+  <div class="overview-card reveal"><div class="label">主講</div><div class="value">許純琪 執行副總（Judy）</div><div class="hint">新任執行副總會議重點</div></div>
+  <div class="overview-card reveal"><div class="label">對象</div><div class="value">北六區業務主管</div><div class="hint">主管行動與團隊經營指引</div></div>
+  <div class="overview-card reveal"><div class="label">核心任務</div><div class="value">商品 × 客戶 × 組織</div><div class="hint">從會議內容轉成可執行清單</div></div>
+  <div class="overview-card reveal"><div class="label">閱讀方式</div><div class="value">3 分鐘掌握重點</div><div class="hint">導覽列可快速跳轉章節</div></div>
+</div>
+
+<div class="page-shell toc-wrap">
+  <nav class="toc" aria-label="章節導覽">
+    <a href="#strategy" class="active">五大方向</a>
+    <a href="#actions">主管待辦</a>
+    <a href="#qa">Q&A</a>
+    <a href="#note">必到提醒</a>
+  </nav>
+</div>
+
+<main class="page-shell">
+  <section id="strategy">
+    <div class="section-head">
+      <div><div class="kicker">Strategy</div><h2>未來半年五大努力方向</h2></div>
+      <p class="section-note">不是只記下副總說了什麼，而是轉成主管帶團隊時能使用的理解框架。</p>
+    </div>
+
+    <div class="strategy-grid">
+      <article class="strategy-card reveal">
+        <div class="card-top"><span class="index">01</span><span class="priority">先穩盤</span></div>
+        <h3>市場信心</h3>
+        <div class="translate-stack">
+          <div class="translate-box"><span class="translate-label">會議聽到</span><p>與同業站在平等水平競爭，善用金控集團資源，拉開與保經代通路的差異；市場仍有空間，從預留稅源與資產傳承切入。</p></div>
+          <div class="translate-box lead"><span class="translate-label">主管怎麼帶團隊理解</span><p>不要讓夥伴只用「商品條件」跟同業硬碰硬，要把富邦的銀行、產險、投信、壽險整合能力說成客戶看得懂的優勢。</p></div>
+        </div>
+        <div class="tags"><span class="tag">集團資源整合</span><span class="tag">保經代差異化</span><span class="tag">預留稅源</span></div>
+      </article>
+
+      <article class="strategy-card reveal">
+        <div class="card-top"><span class="index">02</span><span class="priority">要會說</span></div>
+        <h3>商品</h3>
+        <div class="translate-stack">
+          <div class="translate-box"><span class="translate-label">會議聽到</span><p>年底規劃開門紅與新分紅商品；主管要提升團隊商品認識度，將條款轉成故事行銷。</p></div>
+          <div class="translate-box lead"><span class="translate-label">主管怎麼帶團隊理解</span><p>商品訓練不能停在利率、佣金、特色表。要帶夥伴練成三句話：客戶痛點、商品角色、成交理由。</p></div>
+        </div>
+        <div class="tags"><span class="tag">年底開門紅</span><span class="tag">新分紅商品</span><span class="tag">故事行銷</span></div>
+      </article>
+
+      <article class="strategy-card reveal">
+        <div class="card-top"><span class="index">03</span><span class="priority">有組織</span></div>
+        <h3>客戶群</h3>
+        <div class="translate-stack">
+          <div class="translate-box"><span class="translate-label">會議聽到</span><p>全公司保人加被保人逾 600 萬，開發空間大。下半年推動有組織的客戶開發，守護團擴大為準守護團，並串聯地方資源。</p></div>
+          <div class="translate-box lead"><span class="translate-label">主管怎麼帶團隊理解</span><p>不要只把名單丟下去。主管要設計開發場景、邀約理由、跟進節奏，讓客戶開發變成單位共同作戰，而不是各自求生。</p></div>
+        </div>
+        <div class="tags"><span class="tag">600萬+客戶</span><span class="tag">準守護團</span><span class="tag">地方資源</span></div>
+      </article>
+
+      <article class="strategy-card reveal">
+        <div class="card-top"><span class="index">04</span><span class="priority">補人力</span></div>
+        <h3>組織／增員</h3>
+        <div class="translate-stack">
+          <div class="translate-box"><span class="translate-label">會議聽到</span><p>下半年目標純增 600 人。AI 短期內無法取代業務，仍要大力徵員並追求團隊多元；新人考核與領導統御訓練將調整。</p></div>
+          <div class="translate-box lead"><span class="translate-label">主管怎麼帶團隊理解</span><p>增員不是貼徵才文，是把單位要什麼人、誰負責邀約、怎麼培育、如何留存講清楚。純增要看「進來多少」，也要看「留下多少」。</p></div>
+        </div>
+        <div class="tags"><span class="tag">純增600人</span><span class="tag">團隊多元</span><span class="tag">領導統御</span></div>
+      </article>
+
+      <article class="strategy-card reveal">
+        <div class="card-top"><span class="index">05</span><span class="priority">提效率</span></div>
+        <h3>服務</h3>
+        <div class="translate-stack">
+          <div class="translate-box"><span class="translate-label">會議聽到</span><p>App 將改版縮短核保理賠轉速；行動辦公室報表待優化。各區要收集第一線行政痛點，統一回報總部。</p></div>
+          <div class="translate-box lead"><span class="translate-label">主管怎麼帶團隊理解</span><p>服務改善不是抱怨比賽。單位要把問題整理成「情境、影響、建議」三欄，讓總部拿得到能處理的資訊。</p></div>
+        </div>
+        <div class="tags"><span class="tag">App改版</span><span class="tag">報表優化</span><span class="tag">痛點回報</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="actions">
+    <div class="section-head">
+      <div><div class="kicker">Action</div><h2>主管會議行動清單</h2></div>
+      <p class="section-note">把會議重點變成可分工、可追蹤、可帶回早會的下一步。漂亮倉庫先關燈，開始搬貨。</p>
+    </div>
+
+    <div class="meeting-actions">
+      <article class="action-card reveal">
+        <div class="action-code"><div class="step">ACTION 01</div><div class="name">商品<br>翻譯</div></div>
+        <div class="action-body">
+          <h3>每個主推商品，都整理成「客戶聽得懂的三句話」。</h3>
+          <p>主管不要只要求夥伴背條款，而是帶大家把商品翻成銷售語言：客戶為什麼需要、這張保單解決什麼、現在不處理會有什麼代價。</p>
+          <div class="action-split"><div class="action-mini"><b>會議問法</b><span>這張商品不是好在哪裡，而是幫哪一種客戶解決哪一個問題？</span></div><div class="action-mini"><b>產出物</b><span>一張商品故事卡：痛點、解方、案例、邀約句。</span></div></div>
+        </div>
+      </article>
+
+      <article class="action-card reveal">
+        <div class="action-code"><div class="step">ACTION 02</div><div class="name">中段<br>拉升</div></div>
+        <div class="action-body">
+          <h3>優先抓中段業務員，設計 30 天產能推進節奏。</h3>
+          <p>高產能夥伴會自己跑，低產能夥伴需要基本功；最值得主管投入的是中段，因為他們通常有客戶、有意願，只差方法與節奏。</p>
+          <div class="action-split"><div class="action-mini"><b>會議問法</b><span>本月最有機會往上推的 5 個人是誰？卡在哪一關？</span></div><div class="action-mini"><b>產出物</b><span>中段名單、每週拜訪量、主推商品、陪訪或演練安排。</span></div></div>
+        </div>
+      </article>
+
+      <article class="action-card reveal">
+        <div class="action-code"><div class="step">ACTION 03</div><div class="name">純增<br>地圖</div></div>
+        <div class="action-body">
+          <h3>把純增目標拆成「來源、邀約、面談、留存」。</h3>
+          <p>不要只喊純增幾人。主管要帶團隊看見增員漏斗：誰提供名單、誰邀約、誰面談、誰輔導新人活下來。</p>
+          <div class="action-split"><div class="action-mini"><b>會議問法</b><span>我們不是要找更多人而已，是要找到哪些人，並讓他們留下來？</span></div><div class="action-mini"><b>產出物</b><span>每位主管的純增目標、名單來源、面談排程、新人 90 天輔導表。</span></div></div>
+        </div>
+      </article>
+
+      <article class="action-card reveal">
+        <div class="action-code"><div class="step">ACTION 04</div><div class="name">服務<br>回報</div></div>
+        <div class="action-body">
+          <h3>把行政、核保、理賠痛點整理成總部能處理的格式。</h3>
+          <p>第一線的問題很多，但如果只是抱怨，總部很難處理。要改成有情境、有影響、有建議的回報表，讓問題有機會被修掉。</p>
+          <div class="action-split"><div class="action-mini"><b>會議問法</b><span>這個痛點發生在哪個流程？影響客戶、業務還是主管？</span></div><div class="action-mini"><b>產出物</b><span>痛點清單：問題情境、發生頻率、影響程度、建議作法。</span></div></div>
+        </div>
+      </article>
+
+      <article class="action-card reveal">
+        <div class="action-code"><div class="step">ACTION 05</div><div class="name">11月<br>對齊</div></div>
+        <div class="action-body">
+          <h3>11/10、11/11 活動前，先整理單位要帶去問的問題。</h3>
+          <p>必到不是坐在台下聽完就走。主管應該帶著問題去，回來再把總部方向翻成單位行動，否則活動只會變成大型資訊流過。</p>
+          <div class="action-split"><div class="action-mini"><b>會議問法</b><span>我們最想跟行政、核保、客服確認的三件事是什麼？</span></div><div class="action-mini"><b>產出物</b><span>會前提問三題、會後單位宣導三句話、後續追蹤負責人。</span></div></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="meeting-output reveal">
+      <h3>建議每次主管會議結束，留下 3 個可追蹤輸出</h3>
+      <div class="output-grid">
+        <div><b>一張表</b>中段拉升名單、純增漏斗、痛點回報表，至少完成其中一張。</div>
+        <div><b>一個人</b>每個行動項目都指定負責人，不要變成「大家都知道，沒人去做」。</div>
+        <div><b>一個期限</b>設定下次檢查時間，讓會議重點真的回到單位運作。</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="qa">
+    <div class="section-head">
+      <div><div class="kicker">Q&A</div><h2>重點回應</h2></div>
+      <p class="section-note">點開看重點回應；手機閱讀穩定，列印時會自動完整展開。</p>
+    </div>
+
+    <div class="qa-panel">
+      <details class="qa reveal" open>
+        <summary><span class="q-badge">Q</span><span>投資型可否拉到 10%？獎勵能否延續？</span><span class="chev">⌄</span></summary>
+        <div class="answer"><div class="answer-inner"><span class="answer-label">許副總回應</span><br>先處理保經代通路；獎勵延續的前提是不鬧客訴、堅守誠信（留軌跡、據實簽名），並推動 RP 成長（由月三億五往上），搭配躉繳配息再買保障型商品。</div></div>
+      </details>
+
+      <details class="qa reveal">
+        <summary><span class="q-badge">Q</span><span>分紅保單高齡競爭力不足，今年已掉至少三件千萬以上 case。</span><span class="chev">⌄</span></summary>
+        <div class="answer"><div class="answer-inner"><span class="answer-label">許副總回應</span><br>65 歲以上壽險槓桿倍數輸同業（保誠／外商）。將與核保、再保一起檢視吃單與風險結構；但富邦走「穩健」非高速成長，不做承諾不到的數字，對品牌要有信心。同步改善金合一商品。</div></div>
+      </details>
+
+      <details class="qa reveal">
+        <summary><span class="q-badge">Q</span><span>招募獎勵下降，主管收入差距逼走人轉做行銷。</span><span class="chev">⌄</span></summary>
+        <div class="answer"><div class="answer-inner"><span class="answer-label">許副總回應</span><br>今年新人獎勵把較多費用移到低 C 夥伴身上，主管信任獎勵（輔導獎金）明顯下降。將回去檢視獎勵是否差到兩倍，若純增人數多可考慮拉到該水平。</div></div>
+      </details>
+
+      <details class="qa reveal">
+        <summary><span class="q-badge">Q</span><span>行銷獎勵過大，行為被帶往簡單賺錢路徑（六區）。</span><span class="chev">⌄</span></summary>
+        <div class="answer"><div class="answer-inner"><span class="answer-label">許副總回應</span><br>因大開＋分紅大賣，習慣往容易的方向走。已調整新人考核獎勵標準並放寬考核（因應第二季脫落），養人成本提高、獎勵略有折損，但 RAM 會協助主管操作至第二季結束。</div></div>
+      </details>
+    </div>
+  </section>
+
+  <section id="note">
+    <div class="section-head">
+      <div><div class="kicker">Must Attend</div><h2>必到提醒</h2></div>
+      <p class="section-note">把「必到」做成最後的行動收束，避免讀完很感動，然後行事曆沒動靜。</p>
+    </div>
+
+    <div class="note-card reveal">
+      <div class="note-main">
+        <h3>11 月活動<br>無不來的選項</h3>
+        <p>現場將由行政、核保、客服主管說明公司行政優化與提升方向，並由總部團隊報告未來規劃。</p>
+        <div class="date-grid">
+          <div class="date-box"><div class="date">11/10</div><div class="place">台中場</div></div>
+          <div class="date-box"><div class="date">11/11</div><div class="place">後續活動</div></div>
+        </div>
+      </div>
+      <div class="note-side">
+        <div>
+          <div class="label">FINAL CALL</div>
+          <div class="line">這不是資訊通知，<br>是主管跟總部對齊節奏的場次。</div>
+        </div>
+        <div class="warning">建議後續可加上「可帶回單位宣導的 3 句話」，讓主管回去不用再自己翻譯一次。</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  const progress = document.getElementById('progress');
+  const setProgress = () => {
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - doc.clientHeight;
+    progress.style.width = (max ? (doc.scrollTop / max) * 100 : 0) + '%';
+  };
+  window.addEventListener('scroll', setProgress, {passive:true});
+  setProgress();
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduceMotion){
+    const revealObserver = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },{threshold:.12,rootMargin:'0px 0px -48px 0px'});
+    document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+  }else{
+    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+  }
+
+  const navLinks = [...document.querySelectorAll('.toc a')];
+  const sections = navLinks.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+  const navObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        navLinks.forEach(link=>link.classList.remove('active'));
+        const active = navLinks.find(link => link.getAttribute('href') === '#' + entry.target.id);
+        if(active) active.classList.add('active');
+      }
+    });
+  },{rootMargin:'-32% 0px -58% 0px',threshold:.01});
+  sections.forEach(section=>navObserver.observe(section));
+
+  // 列印時自動展開所有 Q&A
+  window.addEventListener('beforeprint',()=>{
+    document.querySelectorAll('details.qa').forEach(d=>d.setAttribute('open',''));
+  });
+</script>
+</body>
+</html>
